@@ -6,7 +6,6 @@ on:
 jobs:
   job-with-mysql-8_0:
     runs-on: ubuntu-20.04
-    environment: dev
     env:
       MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
       MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
