@@ -17,6 +17,7 @@ jobs:
           MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
           MYSQL_USER: ${{ secrets.MYSQL_USER }}
           MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+          NEW_DATABASE: ${{ secrets.NEW_DATABASE }}
         options: >-
           --health-cmd "mysqladmin ping"
           --health-interval 10s
