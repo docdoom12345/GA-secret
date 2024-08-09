@@ -40,3 +40,8 @@ jobs:
             echo "MySQL is not ready yet... retrying in 2 seconds."
             sleep 2
           done
+      - name: Create Database and Grant Full Permissions to User1
+        run: |
+          mysql --protocol=tcp -h localhost -P 3306 -u root -p${{ secrets.MYSQL_ROOT_PASSWORD }} -e "CREATE DATABASE IF NOT EXISTS ${{ secrets.NEW_DATABASE }};"
+          mysql --protocol=tcp -h localhost -P 3306 -u root -p${{ secrets.MYSQL_ROOT_PASSWORD }} -e "CREATE USER IF NOT EXISTS '${{ secrets.MYSQL_USER }}'@'%' IDENTIFIED BY '${{ secrets.MYSQL_PASSWORD }}';"
+          mysql --protocol=tcp -h localhost -P 3306 -u root -p${{ secrets.MYSQL_ROOT_PASSWORD }} -e "GRANT ALL PRIVILEGES ON ${{ secrets.NEW_DATABASE }}.* TO '${{ secrets.MYSQL_USER }}'@'%'; FLUSH PRIVILEGES;"
