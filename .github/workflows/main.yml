@@ -6,6 +6,7 @@ on:
 jobs:
   job-with-mysql-8_0:
     runs-on: ubuntu-20.04
+    environment: dev
     services:
       db:
         image: mysql:8.0
